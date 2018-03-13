@@ -318,7 +318,16 @@ function colisionDetector() {
     });
 }
 
+function attachStartGameButtonListener() {
+    var startGameButton = document.getElementById('gameStart');
+
+    startGameButton.addEventListener('click', function () {
+        document.location.href = "game/game.html";
+    })
+}
+
 function game() {
+    attachStartGameButtonListener();
     timer();
     fallingPopcorn('start');
     bucketMove();
