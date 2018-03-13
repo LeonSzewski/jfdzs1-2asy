@@ -37,7 +37,6 @@ function writeResultData(score) {
 
 function startGame() {
     var $gameCount = $('#gameCount'),
-        $gameStart = $('#gameStart'),
         timeleft = 3;
 
     $gameCount.text(timeleft);
@@ -51,7 +50,7 @@ function startGame() {
             $gameCount.text('START');
 
             setTimeout(function () {
-                $gameStart.remove();
+                $gameCount.remove();
                 game();
             }, 1000);
         }
@@ -321,15 +320,6 @@ function colisionDetector() {
     });
 }
 
-function attachStartGameButtonListener() {
-    var $startGameButton = $('#gameStart'),
-        $mainSite = $('#gameManual');
-
-    $startGameButton.on('click', function () {
-        $mainSite.hide();
-        startGame();
-    })
-}
 
 function game() {
     timer();
@@ -338,4 +328,4 @@ function game() {
     setInterval(colisionDetector, 10);
 }
 
-attachStartGameButtonListener();
+startGame();

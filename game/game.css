@@ -4,7 +4,7 @@
     font-family: 'Roboto', sans-serif;
 }
 
-.game-start {
+.game-count {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,15 +14,6 @@
     height: 100vh;
     color: #070400;
     z-index: 4;
-}
-
-.game-manual {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.game-count {
     font-size: 15em;
 }
 
