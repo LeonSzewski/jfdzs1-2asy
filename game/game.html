@@ -1,34 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Łapacz popcornu</title>
     <link rel="Shortcut icon" href="images/popcorn.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="game.css">
+    <title>Łapacz popcornu</title>
+    <link rel="Shortcut icon" href="images/popcorn.png">
 </head>
 <body>
-    <div id="game">
-        <div id="gameCount">3</div>
-        <div id="gameBackground"></div>
-        <div class="statusBar">
-            <div class="teethBox">
-                <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
-                <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
-                <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
-            </div>
-            <div class="score">Score: <span id="score">0</span></div>
-            <div class="timer">Time: <span id="timer">120</span> sec</div>
-        </div>
-        <div id="gameArea"></div>
-        <div id="player"></div>
-        <div class="statics">
-            <h3 class="yourScore">Twój wynik to: <span id="yourScore">-</span></h3>
-            <h1>Najlepsze wyniki: </h1>
-            <div id="topTenList">
-            </div>
-            <div class="staticsPlayagain">Zagraj jeszcze raz</div>
-        </div>
+<div id="gameStart" class="game-start">
+    <div id="gameManual" class="game-manual">
+        <h1>WITAJ W GRZE ŁAPACZ POPCORNU</h1>
+        <h2>Instrukcja gry:</h2>
+        <p>Gra polega na łapaniu do kubełka spadającego popcornu</p>
+        <p>Każdy złapany popcorn to 1 punkt.</p>
+        <p>Rozgrywka trwa 120 seksund</p>
+        <p>Oprócz popcornu spadają nieotwarte ziarna kukurydzy, którego złapanie skutkuje utratą zęba</p>
+        <p>Masz tylko trzy zęby</p>
+        <p>Utrata wszystkich zębów kończy rozgrywkę</p>
+        <p>Po każdych 40 sekundach rozgrywki poziom trudności wzrasta</p>
+        <button class="start-button" id="startButton">graj</button>
     </div>
+    <div id="gameCount" class="game-count"></div>
+</div>
+<div id="game">
+    <div id="gameBackground"></div>
+    <div class="statusBar">
+        <div class="teethBox">
+            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
+            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
+            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
+        </div>
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="timer">Time: <span id="timer">120</span> sec</div>
+    </div>
+    <div id="gameArea"></div>
+    <div id="player"></div>
+    <div class="statics">
+        <h3 class="yourScore">Twój wynik to: <span id="yourScore">-</span></h3>
+        <h1>Najlepsze wyniki: </h1>
+        <div id="topTenList">
+        </div>
+        <div class="staticsPlayagain">Zagraj jeszcze raz</div>
+    </div>
+</div>
+
 <script
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -46,6 +64,7 @@
         messagingSenderId: "534785591572"
     };
     firebase.initializeApp(config);
+
 </script>
 <script src="game.js"></script>
 

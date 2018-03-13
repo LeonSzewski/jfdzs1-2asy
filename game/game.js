@@ -37,7 +37,10 @@ function writeResultData(score) {
 
 function startGame() {
     var $gameCount = $('#gameCount'),
+        $gameStart = $('#gameStart'),
         timeleft = 3;
+
+    $gameCount.text(timeleft);
 
     var downloadTimer = setInterval(function () {
         timeleft--;
@@ -48,7 +51,7 @@ function startGame() {
             $gameCount.text('START');
 
             setTimeout(function () {
-                $gameCount.remove();
+                $gameStart.remove();
                 game();
             }, 1000);
         }
@@ -318,6 +321,16 @@ function colisionDetector() {
     });
 }
 
+function attachStartGameButtonListener() {
+    var $startGameButton = $('#gameStart'),
+        $mainSite = $('#gameManual');
+
+    $startGameButton.on('click', function () {
+        $mainSite.hide();
+        startGame();
+    })
+}
+
 function game() {
     timer();
     fallingPopcorn('start');
@@ -325,4 +338,4 @@ function game() {
     setInterval(colisionDetector, 10);
 }
 
-startGame();
+attachStartGameButtonListener();
