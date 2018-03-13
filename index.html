@@ -8,8 +8,41 @@
     <title>Łapacz popcornu</title>
 </head>
 <body>
-
+<main>
+    <div id="gameManual">
+    <h1>WITAJ W GRZE ŁAPACZ POPCORNU</h1>
+    <h2>Instrukcja gry:</h2>
+    <p>Dostęp do gry użytkownik otrzymuje po zapisaniu się na newstletter serwisu GitFilm</p>
+    <p>Gra polega na łapaniu do kubełka spadającego popcornu</p>
+    <p>Każdy złapany fallingPopcorn to 1 punkt.</p>
+    <p>Rozgrywka trwa 120 seksund</p>
+    <p>Oprócz popcornu spadają spalone ziarna kukurydzy</p>
+    <p>Złapanie spalonego ziarna skutkuje utratą zęba</p>
+    <p>Masz tylko trzy zęby</p>
+    <p>Utrata wszystkich zębów kończy rozgrywkę</p>
+    <p>Po  60 sekundach rozgrywki przechodzisz na lvl2</p>
+    <p>Ziarna przyspieszają pojawia się więcej spalonych ziaren</p>
+    <p>Użytkownik może w każdym momencie opuścić grę lub ją zrestartować</p>
+    <p>Gra konczy się przekazaniem graczowi uzyskanego wyniku oraz tabeli 10 najlepszych.</p>
+    <button class="main-button" id="gameStart">graj</button>
+    <div id="myModal" class="modal">
+    <div id="modalContent" class="modal-content">
+    <div class="shake-chunk shake-constant"><img src="images/popcorn.png" class="img-responsive"></div>'
+    </div>
+    </div>
+    </div>
+</main>
 <script>
+
+    function attachStartGameButtonListener() {
+        var startGameButton = document.getElementById('gameStart');
+
+        startGameButton.addEventListener('click', function () {
+            document.location.href = "game/game.html";
+        })
+    }
+
+    attachStartGameButtonListener();
 
 </script>
 
