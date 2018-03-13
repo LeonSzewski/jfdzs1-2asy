@@ -10,34 +10,22 @@
     <link rel="Shortcut icon" href="images/popcorn.png">
 </head>
 <body>
-<div>
-    <div class="gameManual">
+<div id="gameStart" class="game-start">
+    <div id="gameManual" class="game-manual">
         <h1>WITAJ W GRZE ŁAPACZ POPCORNU</h1>
         <h2>Instrukcja gry:</h2>
-        <p>Dostęp do gry użytkownik otrzymuje po zapisaniu się na newstletter serwisu GitFilm</p>
         <p>Gra polega na łapaniu do kubełka spadającego popcornu</p>
-        <p>Każdy złapany fallingPopcorn to 1 punkt.</p>
+        <p>Każdy złapany popcorn to 1 punkt.</p>
         <p>Rozgrywka trwa 120 seksund</p>
-        <p>Oprócz popcornu spadają spalone ziarna kukurydzy</p>
-        <p>Złapanie spalonego ziarna skutkuje utratą zęba</p>
+        <p>Oprócz popcornu spadają nieotwarte ziarna kukurydzy, którego złapanie skutkuje utratą zęba</p>
         <p>Masz tylko trzy zęby</p>
         <p>Utrata wszystkich zębów kończy rozgrywkę</p>
-        <p>Po 60 sekundach rozgrywki przechodzisz na lvl2</p>
-        <p>Ziarna przyspieszają pojawia się więcej spalonych ziaren</p>
-        <p>Użytkownik może w każdym momencie opuścić grę lub ją zrestartować</p>
-        <p>Gra konczy się przekazaniem graczowi uzyskanego wyniku oraz tabeli 10 najlepszych.</p>
-        <button class="main-button" id="gameStart">graj</button>
-        <div id="myModal" class="modal">
-            <div id="modalContent" class="modal-content">
-                <div class="shake-chunk shake-constant"><img src="images/popcorn.png" class="img-responsive"></div>
-                '
-            </div>
-        </div>
+        <p>Po każdych 40 sekundach rozgrywki poziom trudności wzrasta</p>
+        <button class="start-button" id="startButton">graj</button>
     </div>
+    <div id="gameCount" class="game-count"></div>
 </div>
-
 <div id="game">
-    <div id="gameCount">3</div>
     <div id="gameBackground"></div>
     <div class="statusBar">
         <div class="teethBox">
@@ -58,6 +46,7 @@
         <div class="staticsPlayagain">Zagraj jeszcze raz</div>
     </div>
 </div>
+
 <script
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="

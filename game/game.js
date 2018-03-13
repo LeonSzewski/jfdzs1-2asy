@@ -37,7 +37,10 @@ function writeResultData(score) {
 
 function startGame() {
     var $gameCount = $('#gameCount'),
+        $gameStart = $('#gameStart'),
         timeleft = 3;
+
+    $gameCount.text(timeleft);
 
     var downloadTimer = setInterval(function () {
         timeleft--;
@@ -48,7 +51,7 @@ function startGame() {
             $gameCount.text('START');
 
             setTimeout(function () {
-                $gameCount.remove();
+                $gameStart.remove();
                 game();
             }, 1000);
         }
@@ -319,19 +322,20 @@ function colisionDetector() {
 }
 
 function attachStartGameButtonListener() {
-    var startGameButton = document.getElementById('gameStart');
+    var $startGameButton = $('#gameStart'),
+        $mainSite = $('#gameManual');
 
-    startGameButton.addEventListener('click', function () {
-        document.location.href = "game/game.html";
+    $startGameButton.on('click', function () {
+        $mainSite.hide();
+        startGame();
     })
 }
 
 function game() {
-    attachStartGameButtonListener();
     timer();
     fallingPopcorn('start');
     bucketMove();
     setInterval(colisionDetector, 10);
 }
 
-startGame();
+attachStartGameButtonListener();
