@@ -100,7 +100,7 @@ function resultsUpdate(score) {
 
 function timer() {
     var $timer = $('#timer'),
-        timeleft = 12;
+        timeleft = 120;
 
     countdownTimer = setInterval(function () {
         timeleft--;
