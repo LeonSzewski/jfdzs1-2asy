@@ -83,13 +83,9 @@ function resultsUpdate(score) {
         newElement = document.createElement("div");
 
     openResultData().then(function (topTen) {
-        topTen.map(function (value, index) {
-            console.log(value.score, index);
+        topTen.map(function (value) {
             var positionTemplate = ''
-                + '<div class="result"><span>' + (index + 1) + '.' + '</span><span>' + value.score + '</span></div>';
-
-            // console.log(positionTemplate);
-            // console.log($topTenList);
+                + '<li class="result">' + value.score + '</li>';
 
             newElement.innerHTML = positionTemplate;
             $topTenList.append(positionTemplate);
