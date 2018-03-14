@@ -82,9 +82,6 @@ function resultsUpdate(score) {
         newElement = document.createElement("div");
 
     openResultData()
-        // .then(function (topTen) {
-        //     topTen.slice(11)
-        // })
         .then(function (topTen) {
             topTen.map(function (value) {
                 var positionTemplate = ''
