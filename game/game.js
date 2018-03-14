@@ -16,11 +16,10 @@ function openResultData() {
 
                 topTen.push(item);
             });
-            console.log(topTen);
             topTen.sort(function (a, b) {
                 return b.score - a.score
             });
-            console.log(topTen);
+            topTen = topTen.slice(0, 10);
             return resolve(topTen);
         }, function (error) {
             console.log("Error: " + error.code);
@@ -82,15 +81,19 @@ function resultsUpdate(score) {
         $topTenList = $('#topTenList'),
         newElement = document.createElement("div");
 
-    openResultData().then(function (topTen) {
-        topTen.map(function (value) {
-            var positionTemplate = ''
-                + '<li class="result">' + value.score + '</li>';
+    openResultData()
+        // .then(function (topTen) {
+        //     topTen.slice(11)
+        // })
+        .then(function (topTen) {
+            topTen.map(function (value) {
+                var positionTemplate = ''
+                    + '<li class="result">' + value.score + '</li>';
 
-            newElement.innerHTML = positionTemplate;
-            $topTenList.append(positionTemplate);
-        })
-    });
+                newElement.innerHTML = positionTemplate;
+                $topTenList.append(positionTemplate);
+            })
+        });
     $statics.addClass('staticActive');
     $yourScore.text(score);
 }
