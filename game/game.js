@@ -79,13 +79,17 @@ function resultsUpdate(score) {
     var $yourScore = $('#yourScore'),
         $statics = $('.statics'),
         $topTenList = $('#topTenList'),
-        newElement = document.createElement("div");
+        newElement = document.createElement("div"),
+        $loader = $('#loader');
+
+    // $(window).load(function() { // Czekamy na załadowanie całej zawartości strony
+    //     $("#preloader #image").fadeOut(); // Usuwamy grafikę ładowania
+    //     $("#preloader").delay(350).fadeOut("slow"); // Usuwamy diva przysłaniającego stronę
+    // })
 
     openResultData()
-        // .then(function (topTen) {
-        //     topTen.slice(11)
-        // })
         .then(function (topTen) {
+            $loader.remove();
             topTen.map(function (value) {
                 var positionTemplate = ''
                     + '<li class="result">' + value.score + '</li>';
@@ -93,6 +97,7 @@ function resultsUpdate(score) {
                 newElement.innerHTML = positionTemplate;
                 $topTenList.append(positionTemplate);
             })
+
         });
     $statics.addClass('staticActive');
     $yourScore.text(score);
@@ -100,7 +105,7 @@ function resultsUpdate(score) {
 
 function timer() {
     var $timer = $('#timer'),
-        timeleft = 120;
+        timeleft = 1;
 
     countdownTimer = setInterval(function () {
         timeleft--;
