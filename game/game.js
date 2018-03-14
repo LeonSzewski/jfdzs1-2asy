@@ -64,13 +64,13 @@ function stopGame() {
 }
 
 function endOfGame() {
-    var $staticsPlayagain = $('.staticsPlayagain');
+    var $playagain = $('.playagain');
 
     stopGame();
     writeResultData(score);
     resultsUpdate(score);
 
-    $staticsPlayagain.click(function () {
+    $playagain.click(function () {
         location.reload();
     });
 //    koniec gry po upłynięciu założonego czasu - pojawienie się ekranu końcowego z wynikiem i listą top 10
@@ -101,7 +101,7 @@ function resultsUpdate(score) {
 
 function timer() {
     var $timer = $('#timer'),
-        timeleft = 120;
+        timeleft = 12;
 
     countdownTimer = setInterval(function () {
         timeleft--;
@@ -254,14 +254,12 @@ function fallingPopcorn(action) {
 
 function gameover() {
     // przegrana po utracie wszystkich zębów - plansza gameover
-    var $gameover = $('<div class="gameover">GAME OVER</div>'),
-        $playagain = $('<div class="playagain">Zagraj jeszcze raz</div>');
+    var $gameover = $('#gameover'),
+        $playagain = $('.playagain');
 
     stopGame();
 
-    $gameover.append($playagain);
-    $('#game').append($gameover);
-    $gameover.hide().fadeIn(3000);
+    $gameover.fadeIn(3000);
 
     $playagain.click(function () {
         location.reload();
