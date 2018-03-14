@@ -16,11 +16,10 @@ function openResultData() {
 
                 topTen.push(item);
             });
-            console.log(topTen);
             topTen.sort(function (a, b) {
                 return b.score - a.score
             });
-            console.log(topTen);
+            topTen = topTen.slice(0, 10);
             return resolve(topTen);
         }, function (error) {
             console.log("Error: " + error.code);
@@ -37,7 +36,6 @@ function writeResultData(score) {
 
 function startGame() {
     var $gameCount = $('#gameCount'),
-        $gameStart = $('#gameStart'),
         timeleft = 3;
 
     $gameCount.text(timeleft);
@@ -51,7 +49,7 @@ function startGame() {
             $gameCount.text('START');
 
             setTimeout(function () {
-                $gameStart.remove();
+                $gameCount.remove();
                 game();
             }, 1000);
         }
@@ -65,13 +63,13 @@ function stopGame() {
 }
 
 function endOfGame() {
-    var $staticsPlayagain = $('.staticsPlayagain');
+    var $playagain = $('.playagain');
 
     stopGame();
     writeResultData(score);
     resultsUpdate(score);
 
-    $staticsPlayagain.click(function () {
+    $playagain.click(function () {
         location.reload();
     });
 //    koniec gry po upłynięciu założonego czasu - pojawienie się ekranu końcowego z wynikiem i listą top 10
@@ -83,19 +81,19 @@ function resultsUpdate(score) {
         $topTenList = $('#topTenList'),
         newElement = document.createElement("div");
 
-    openResultData().then(function (topTen) {
-        topTen.map(function (value, index) {
-            console.log(value.score, index);
-            var positionTemplate = ''
-                + '<div class="result"><span>' + (index + 1) + '.' + '</span><span>' + value.score + '</span></div>';
+    openResultData()
+        // .then(function (topTen) {
+        //     topTen.slice(11)
+        // })
+        .then(function (topTen) {
+            topTen.map(function (value) {
+                var positionTemplate = ''
+                    + '<li class="result">' + value.score + '</li>';
 
-            // console.log(positionTemplate);
-            // console.log($topTenList);
-
-            newElement.innerHTML = positionTemplate;
-            $topTenList.append(positionTemplate);
-        })
-    });
+                newElement.innerHTML = positionTemplate;
+                $topTenList.append(positionTemplate);
+            })
+        });
     $statics.addClass('staticActive');
     $yourScore.text(score);
 }
@@ -255,14 +253,12 @@ function fallingPopcorn(action) {
 
 function gameover() {
     // przegrana po utracie wszystkich zębów - plansza gameover
-    var $gameover = $('<div class="gameover">GAME OVER</div>'),
-        $playagain = $('<div class="playagain">Zagraj jeszcze raz</div>');
+    var $gameover = $('#gameover'),
+        $playagain = $('.playagain');
 
     stopGame();
 
-    $gameover.append($playagain);
-    $('#game').append($gameover);
-    $gameover.hide().fadeIn(3000);
+    $gameover.fadeIn(3000);
 
     $playagain.click(function () {
         location.reload();
@@ -321,15 +317,6 @@ function colisionDetector() {
     });
 }
 
-function attachStartGameButtonListener() {
-    var $startGameButton = $('#gameStart'),
-        $mainSite = $('#gameManual');
-
-    $startGameButton.on('click', function () {
-        $mainSite.hide();
-        startGame();
-    })
-}
 
 function game() {
     timer();
@@ -338,4 +325,4 @@ function game() {
     setInterval(colisionDetector, 10);
 }
 
-attachStartGameButtonListener();
+startGame();
