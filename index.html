@@ -3,57 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <title>Łapacz popcornu</title>
-    <link rel="Shortcut icon" href="images/popcorn.png">
+    <link rel="Shortcut icon" href="game/images/popcorn.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="game/game.css">
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            color: #070400;
+        }
+
+        .game-manual {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: #ff8619;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .game-manual > h1:first-child {
+            margin-top: 50px;
+        }
+
+        .game-manual > h1:nth-child(2) {
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .game-manual > h1 {
+            margin-bottom: 20px;
+        }
+
+        .game-manual > h2 {
+            margin-bottom: 20px;
+        }
+
+        .game-manual > ul > li {
+            padding: 10px;
+        }
+
+        .start-button {
+            border: 2px solid #070400;
+            border-radius: 5px;
+            font-size: 3em;
+            text-decoration: none;
+            padding: 10px;
+            margin: 50px;
+            letter-spacing: 10px;
+        }
+
+        .start-button:hover {
+            background: rgba(3, 2, 7, 0.5);
+        }
+
+        .version {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+        }
+
+        footer p {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<div id="gameCount" class="game-count"></div>
-<div id="game">
-    <div id="gameBackground"></div>
-    <div class="statusBar">
-        <div class="teethBox">
-            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
-            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
-            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
-        </div>
-        <div class="score">Score: <span id="score">0</span></div>
-        <div class="timer">Time: <span id="timer">120</span> sec</div>
-    </div>
-    <div id="gameArea"></div>
-    <div id="player"></div>
-    <div id="gameover" class="gameover">
-        <p>GAME OVER</p>
-        <a href="#" class="playagain">JESZCZE RAZ</a>
-    </div>
-    <div class="statics">
-        <h3 class="yourScore">Twój wynik to: <span id="yourScore">-</span></h3>
-        <h1>Najlepsze wyniki: </h1>
-        <ol id="topTenList"></ol>
-        <a href="#" class="playagain">JESZCZE RAZ</a>
-    </div>
-</div>
-
-<script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-</script>
-<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
-<script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDAvu485jpWt1wVX9-GJ1a-z6THg_GbT5Y",
-        authDomain: "popcorn-catcher.firebaseapp.com",
-        databaseURL: "https://popcorn-catcher.firebaseio.com",
-        projectId: "popcorn-catcher",
-        storageBucket: "popcorn-catcher.appspot.com",
-        messagingSenderId: "534785591572"
-    };
-    firebase.initializeApp(config);
-
-</script>
-<script src="game.js"></script>
-
+<div class="version">ver. 0.2.0</div>
+<main class="game-manual">
+    <h1>Witaj w grze</h1>
+    <h1>ŁAPACZ POPCORNU</h1>
+    <h2>Instrukcja gry:</h2>
+    <ul>
+        <li>Gra polega na łapaniu do kubełka spadającego popcornu</li>
+        <li>Kubełek porusza się przy pomocy ruchów myszki</li>
+        <li>Każdy złapany popcorn to 1 punkt.</li>
+        <li>Rozgrywka trwa 120 sekund</li>
+        <li>Oprócz popcornu spadają nieotwarte ziarna kukurydzy</li>
+        <li>Złapanie go skutkuje utratą zęba</li>
+        <li>Masz tylko trzy zęby</li>
+        <li>Utrata wszystkich zębów kończy rozgrywkę</li>
+        <li>Po każdych 40 sekundach rozgrywki poziom trudności wzrasta</li>
+    </ul>
+    <a href="game/game.html" class="start-button">ZAGRAJ</a>
+</main>
+<footer>
+    <p>Wszelkie prawa zastrzeżone. LeonSzewski 2018</p>
+</footer>
 </body>
 </html>
