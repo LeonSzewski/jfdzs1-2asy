@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Łapacz popcornu</title>
+    <link rel="Shortcut icon" href="images/popcorn.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+<div id="gameCount" class="game-count"></div>
+<div id="game">
+    <div id="gameBackground"></div>
+    <div class="statusBar">
+        <div class="teethBox">
+            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
+            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
+            <div class="tooth"><img src="images/tooth.png" alt="tooth"></div>
+        </div>
+        <div class="score">Score: <span id="score">0</span></div>
+        <div class="timer">Time: <span id="timer">120</span> sec</div>
+    </div>
+    <div id="gameArea"></div>
+    <div id="player"></div>
+    <div id="gameover" class="gameover">
+        <p>GAME OVER</p>
+        <a href="#" class="playagain">JESZCZE RAZ</a>
+    </div>
+    <div class="statics">
+        <h3 class="yourScore">Twój wynik to: <span id="yourScore">-</span></h3>
+        <h1>Najlepsze wyniki: </h1>
+        <ol id="topTenList"></ol>
+        <a href="#" class="playagain">JESZCZE RAZ</a>
+    </div>
+</div>
+
+<script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+</script>
+<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDAvu485jpWt1wVX9-GJ1a-z6THg_GbT5Y",
+        authDomain: "popcorn-catcher.firebaseapp.com",
+        databaseURL: "https://popcorn-catcher.firebaseio.com",
+        projectId: "popcorn-catcher",
+        storageBucket: "popcorn-catcher.appspot.com",
+        messagingSenderId: "534785591572"
+    };
+    firebase.initializeApp(config);
+
+</script>
+<script src="game.js"></script>
+
+</body>
+</html>
