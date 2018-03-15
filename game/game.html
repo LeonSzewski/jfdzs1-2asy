@@ -24,16 +24,20 @@
     <div id="player"></div>
     <div id="gameover" class="gameover">
         <p>GAME OVER</p>
-        <a href="#" class="playagain">JESZCZE RAZ</a>
+        <a href="#" class="playagain button">JESZCZE RAZ</a>
     </div>
     <div class="statics">
-        <h3 class="yourScore">Twój wynik to: <span id="yourScore">-</span></h3>
-        <h1>Najlepsze wyniki: </h1>
-        <div class="topTenList">
-            <div id="loader" class="loader"></div>
-            <ol id="topTenList"></ol>
+        <div id="getPlayerName" class="getPlayerName">
+            <h3 class="playerScore">Twój wynik to: <span id="playerScore">-</span></h3>
+            <input id="getPlayerNameInput" type="text" maxlength="20" placeholder="Podaj swoje imię">
+            <a id="getPlayerNameButton" href="#" class="button">OK</a>
         </div>
-        <a href="#" class="playagain">JESZCZE RAZ</a>
+        <div id="loader" class="loader"></div>
+        <div id="topTen" class="topTen">
+            <h1>Najlepsze wyniki: </h1>
+            <ol id="topTenList"></ol>
+            <a href="#" class="playagain button">JESZCZE RAZ</a>
+        </div>
     </div>
 </div>
 
