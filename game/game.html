@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Łapacz popcornu</title>
-    <link rel="Shortcut icon" href="images/popcorn.png">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <link rel="Shortcut icon" href="images/popcorn-logo.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="game.css">
 </head>
@@ -24,13 +25,20 @@
     <div id="player"></div>
     <div id="gameover" class="gameover">
         <p>GAME OVER</p>
-        <a href="#" class="playagain">JESZCZE RAZ</a>
+        <a href="#" class="playagain button">JESZCZE RAZ</a>
     </div>
     <div class="statics">
-        <h3 class="yourScore">Twój wynik to: <span id="yourScore">-</span></h3>
-        <h1>Najlepsze wyniki: </h1>
-        <ol id="topTenList"></ol>
-        <a href="#" class="playagain">JESZCZE RAZ</a>
+        <div id="getPlayerName" class="getPlayerName">
+            <h3 class="playerScore">Twój wynik to: <span id="playerScore">-</span></h3>
+            <input id="getPlayerNameInput" type="text" maxlength="20" placeholder="Podaj swoje imię">
+            <a id="getPlayerNameButton" href="#" class="button getPlayerName__button">OK</a>
+        </div>
+        <div id="loader" class="loader"></div>
+        <div id="topTen" class="topTen">
+            <h1>Najlepsze wyniki: </h1>
+            <ol id="topTenList"></ol>
+            <a href="#" class="playagain button">JESZCZE RAZ</a>
+        </div>
     </div>
 </div>
 

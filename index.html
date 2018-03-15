@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Łapacz popcornu</title>
-    <link rel="Shortcut icon" href="game/images/popcorn.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="Shortcut icon" href="game/images/popcorn-logo.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="game/game.css">
     <style>
@@ -14,13 +15,16 @@
             color: #070400;
         }
 
+        body {
+            background: #ff8619;
+        }
+
         .game-manual {
             display: flex;
             align-items: center;
             flex-direction: column;
             background: #ff8619;
             width: 100%;
-            height: 100vh;
         }
 
         .game-manual > h1:first-child {
@@ -58,14 +62,7 @@
             background: rgba(3, 2, 7, 0.5);
         }
 
-        .version {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-        }
-
         footer {
-            position: absolute;
             bottom: 0;
             width: 100%;
             padding: 20px;
@@ -74,10 +71,19 @@
         footer p {
             text-align: center;
         }
+
+        @media (min-width: 520px) {
+            .game-manual {
+                height: 100vh;
+            }
+
+            footer {
+                position: absolute;
+            }
+        }
     </style>
 </head>
 <body>
-<div class="version">ver. 0.2.0</div>
 <main class="game-manual">
     <h1>Witaj w grze</h1>
     <h1>ŁAPACZ POPCORNU</h1>
