@@ -118,26 +118,49 @@
     text-align: center;
 }
 
-.playagain {
+.button {
+    display: block;
     border-radius: 5px;
     border: 2px solid #070400;
-    font-size: 45px;
+    font-size: 20px;
     text-align: center;
     padding: 10px;
     text-decoration: none;
     margin: 50px;
-    letter-spacing: 10px;
+    letter-spacing: 2px;
     background: #ff8619;
 }
 
-.playagain:hover {
+.button:hover {
     background: rgba(3, 2, 7, 0.5);
 }
 
-.topTenList {
+.playerScore {
+    padding: 15% 0;
+}
+
+.getPlayerName {
+    margin-top: 20%;
+}
+
+.getPlayerName>input {
+    padding: 2px;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 2px solid #070400;
+}
+
+.topTen {
+    display: none;
     margin-top: 50px;
+}
+
+.topTen>h1 {
+    margin-bottom: 50px;
+}
+
+.topTen>ol {
     height: 370px;
-    position: relative;
 }
 
 @-webkit-keyframes rotation {
@@ -149,14 +172,15 @@
     }
 }
 
-.loader{
+.loader {
+    display: none;
     animation: rotation 2s infinite linear;
     background-image: url("images/popcorn3.png");
     background-size: contain;
     width:50px;
     height:50px;
     position: absolute;
-    top: 50%
+    top: 20%
 }
 
 .statics {
@@ -177,12 +201,9 @@
     display: flex;
 }
 
-.yourScore {
-    padding: 2%;
-}
 
 .result {
-    padding: 30% 0;
+    padding: 8px 0;
     width: 100%;
 }
 

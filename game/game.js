@@ -4,7 +4,8 @@ var popcornInterval = null,
     level_2 = null,
     level_3 = null,
     countdownTimer = null,
-    score = null,
+    playerName = 'anonim',
+    score = 0,
     topTen = [];
 
 function openResultData() {
@@ -28,8 +29,21 @@ function openResultData() {
     });
 }
 
-function writeResultData(score) {
+function getPlayerName() {
+    var $getPlayerNameButton = $('#getPlayerNameButton');
+
+    return new Promise(function (resolve) {
+        $getPlayerNameButton.on('click', function () {
+            var $playerName = $('#getPlayerNameInput').val();
+            playerName = $playerName;
+            return resolve(score, playerName)
+        })
+    })
+}
+
+function writeResultData() {
     firebase.database().ref('results/' + score).set({
+        name: playerName,
         score: score
     });
 }
@@ -57,55 +71,61 @@ function startGame() {
 }
 
 function stopGame() {
-    // funkcja stopująca grę
     fallingPopcorn('stop');
     clearInterval(countdownTimer);
 }
 
 function endOfGame() {
-    var $playagain = $('.playagain');
+    var $playagainButton = $('.playagain'),
+        $playerScore = $('#playerScore'),
+        $statics = $('.statics'),
+        $getPlayerName = $('#getPlayerName');
 
     stopGame();
-    writeResultData(score);
-    resultsUpdate(score);
+    $statics.addClass('staticActive');
+    $playerScore.text(score);
 
-    $playagain.click(function () {
+    getPlayerName()
+        .then(function () {
+            writeResultData()
+        })
+        .then(function () {
+            $getPlayerName.hide();
+            resultsUpdate()
+        });
+
+    $playagainButton.click(function () {
         location.reload();
     });
 //    koniec gry po upłynięciu założonego czasu - pojawienie się ekranu końcowego z wynikiem i listą top 10
 }
 
-function resultsUpdate(score) {
-    var $yourScore = $('#yourScore'),
-        $statics = $('.statics'),
-        $topTenList = $('#topTenList'),
+function resultsUpdate() {
+    var $topTenList = $('#topTenList'),
+        $topTen = $('#topTen'),
         newElement = document.createElement("div"),
         $loader = $('#loader');
 
-    // $(window).load(function() { // Czekamy na załadowanie całej zawartości strony
-    //     $("#preloader #image").fadeOut(); // Usuwamy grafikę ładowania
-    //     $("#preloader").delay(350).fadeOut("slow"); // Usuwamy diva przysłaniającego stronę
-    // })
-
+    $loader.show();
     openResultData()
         .then(function (topTen) {
             $loader.remove();
             topTen.map(function (value) {
                 var positionTemplate = ''
-                    + '<li class="result">' + value.score + '</li>';
+                    + '<li class="result">' + value.name + ' - ' + value.score + '</li>';
 
                 newElement.innerHTML = positionTemplate;
                 $topTenList.append(positionTemplate);
+                $topTen.show()
             })
 
         });
-    $statics.addClass('staticActive');
-    $yourScore.text(score);
 }
 
 function timer() {
     var $timer = $('#timer'),
-        timeleft = 1;
+        timeleft = 120;
+        // timeleft = 1; // testing time
 
     countdownTimer = setInterval(function () {
         timeleft--;
@@ -114,7 +134,7 @@ function timer() {
         if (timeleft < 0) {
             clearInterval(countdownTimer);
 
-            endOfGame();
+            endOfGame(score, playerName);
         }
     }, 1000);
 }
