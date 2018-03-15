@@ -123,12 +123,12 @@
     border-radius: 5px;
     border: 2px solid #070400;
     font-size: 20px;
-    text-align: center;
     padding: 10px;
     text-decoration: none;
-    margin: 50px;
+    margin: 50px auto;
     letter-spacing: 2px;
     background: #ff8619;
+    width: fit-content;
 }
 
 .button:hover {
@@ -148,6 +148,11 @@
     font-size: 20px;
     border-radius: 5px;
     border: 2px solid #070400;
+}
+
+.getPlayerName__button {
+    width: 50%;
+    text-align: center;
 }
 
 .topTen {
@@ -200,7 +205,6 @@
 .staticActive {
     display: flex;
 }
-
 
 .result {
     padding: 8px 0;
