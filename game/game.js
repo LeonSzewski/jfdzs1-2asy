@@ -118,7 +118,6 @@ function resultsUpdate() {
                 $topTenList.append(positionTemplate);
                 $topTen.show()
             })
-
         });
 }
 
