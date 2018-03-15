@@ -4,7 +4,7 @@ var popcornInterval = null,
     level_2 = null,
     level_3 = null,
     countdownTimer = null,
-    playerName = 'anonim',
+    playerName = '',
     score = 0,
     topTen = [];
 
@@ -35,7 +35,11 @@ function getPlayerName() {
     return new Promise(function (resolve) {
         $getPlayerNameButton.on('click', function () {
             var $playerName = $('#getPlayerNameInput').val();
-            playerName = $playerName;
+            if ($playerName === '') {
+                playerName = 'anonim'
+            } else {
+                playerName = $playerName;
+            }
             return resolve(score, playerName)
         })
     })
