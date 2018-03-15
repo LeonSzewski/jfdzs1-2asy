@@ -129,6 +129,8 @@
     letter-spacing: 2px;
     background: #ff8619;
     width: fit-content;
+    width: -moz-max-content;
+    text-align: center;
 }
 
 .button:hover {
